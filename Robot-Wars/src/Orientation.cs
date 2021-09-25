@@ -9,18 +9,19 @@ namespace RobotWars
         /// <summary>
         /// North
         /// </summary>
-        N,
+        N = 0,
         /// <summary>
         /// West
         /// </summary>
-        W,
+        W = 1,
         /// <summary>
         /// South
         /// </summary>
-        S,
+        S = 2,
         /// <summary>
         /// East
         /// </summary>
-        E
+        E = 3
+        // defining these ints is not necessary but it is here for clarity purposes
     }
 }
