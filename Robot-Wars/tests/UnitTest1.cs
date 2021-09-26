@@ -17,14 +17,14 @@ LMLMLMLMM
 MMRMMRMRRM
 ";
 
-            string expectedOutput = @"
+            string expectedOutput = trimBlankCharacters(@"
 1 3 N
 5 1 E
-";
+");
 
-            string output = RobotWars.Program.ReadInput(input);
+            string output = trimBlankCharacters(RobotWars.Program.ReadInput(input));
 
-            bool result = trimBlankCharacters(output) == trimBlankCharacters(expectedOutput);
+            bool result = output == expectedOutput;
 
             Assert.True(result, $"Output:\n'{output}'\ndoes not match expected output:\n'{expectedOutput}'");
              
@@ -33,8 +33,17 @@ MMRMMRMRRM
 
         static string trimBlankCharacters(string input)
         {
-            char[] charsToTrim = {'\n', '\r', ' '};
-            return input.Trim().Trim(charsToTrim);
+            string[] splitStrings = {Environment.NewLine, "\n", "\r\n"};
+            string[] lines = input.Split(splitStrings, StringSplitOptions.RemoveEmptyEntries);
+
+            string output = "";
+
+            foreach (string line in lines)
+            output += line.Trim() + "\n";
+
+            output = output.TrimEnd('\n');
+            
+            return output;
         }
     }
 }
