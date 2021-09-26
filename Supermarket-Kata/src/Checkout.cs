@@ -48,16 +48,24 @@ namespace SupermarketKata
             // goes through list of items in the cart and combines their price
             foreach(ItemCount item in cart)
             {
-                ItemPrice price = currentPricing.Where(itemPrice => itemPrice.sku == item.sku).First();
+                try
+                {
+                    ItemPrice price = currentPricing.Where(itemPrice => itemPrice.sku == item.sku).First();
 
-                if (price.specialPrice == null)
-                    totalPrice += item.count * price.unitPrice;
-                else {
-                    SpecialPrice specialPrice = price.specialPrice ?? new SpecialPrice(1, price.unitPrice);
-                    int numberOfBundles = item.count / specialPrice.bundleUnits;
-                    int remainder = item.count % specialPrice.bundleUnits;
+                    if (price.specialPrice == null)
+                        totalPrice += item.count * price.unitPrice;
+                    else
+                    {
+                        SpecialPrice specialPrice = price.specialPrice ?? new SpecialPrice(1, price.unitPrice);
+                        int numberOfBundles = item.count / specialPrice.bundleUnits;
+                        int remainder = item.count % specialPrice.bundleUnits;
 
-                    totalPrice += numberOfBundles * specialPrice.bundlePrice + remainder * price.unitPrice;
+                        totalPrice += numberOfBundles * specialPrice.bundlePrice + remainder * price.unitPrice;
+                    }
+                }
+                catch(InvalidOperationException)
+                {
+                    Console.WriteLine($"ERROR: did not purchase '{item.count}x {item.sku}' as it has an invalid SKU");
                 }
             }
 
