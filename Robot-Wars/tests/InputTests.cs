@@ -23,7 +23,6 @@ MMRMMRMRRM
 ");
 
             string output = trimBlankCharacters(RobotWars.Program.ReadInput(input));
-
             bool result = output == expectedOutput;
 
             Assert.True(result, $"Output:\n'{output}'\ndoes not match expected output:\n'{expectedOutput}'");

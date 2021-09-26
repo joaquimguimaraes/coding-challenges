@@ -36,13 +36,13 @@ namespace SupermarketKata
             if (skusThatMatchItem.Count() == 0)
                 cart.Add(new ItemCount(sku: item));
             else
-                skusThatMatchItem.First().addItem();
+                skusThatMatchItem.First().AddItem();
 
         }
 
         public int GetTotalPrice(ItemPrice[] currentPricing)
         {
-            // starts with price set to 0
+            // initial price set to 0
             int totalPrice = 0;
 
             // goes through list of items in the cart and combines their price
@@ -52,17 +52,21 @@ namespace SupermarketKata
                 {
                     ItemPrice price = currentPricing.Where(itemPrice => itemPrice.sku == item.sku).First();
 
+                    // if there is no special price associated with SKU then it sums their unit prices
                     if (price.specialPrice == null)
                         totalPrice += item.count * price.unitPrice;
                     else
                     {
+                        //splits number of items by bundles which qualify for special prife
                         SpecialPrice specialPrice = price.specialPrice ?? new SpecialPrice(1, price.unitPrice);
                         int numberOfBundles = item.count / specialPrice.bundleUnits;
                         int remainder = item.count % specialPrice.bundleUnits;
-
+                        
+                        // total price is the sum of price of bundles and the sum of the remainder of unit prices
                         totalPrice += numberOfBundles * specialPrice.bundlePrice + remainder * price.unitPrice;
                     }
                 }
+                //if the scanned item SKU is not in currentPricing (does not have a price), then it assumes SKU is invalid
                 catch(InvalidOperationException)
                 {
                     Console.WriteLine($"ERROR: did not purchase '{item.count}x {item.sku}' as it has an invalid SKU");
