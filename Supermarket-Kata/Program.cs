@@ -32,22 +32,32 @@ namespace SupermarketKata
             {
                 key = Console.ReadKey().Key;
 
+                Console.Clear();
+
                 if (key != breakKey)
                 {
-                    Console.Clear();
                     checkout.Scan(key.ToString());
                     Console.WriteLine($"\nAdded '{key}' to cart\n");
 
-                    Console.WriteLine("Cart:");
-                    foreach (ItemCount item in checkout.cart)
-                        Console.WriteLine($"{item.count}x {item.sku}");
+                    ShowCart(items: checkout.cart.ToArray());
 
                     Console.WriteLine($"\nPress '{breakKey}' to checkout");
                 }
                 else
+                {
+                    ShowCart(items: checkout.cart.ToArray());
                     Console.WriteLine($"\nTotal Price: {checkout.GetTotalPrice(prices)} pence");
+                }
 
             }
+        }
+
+        static void ShowCart(ItemCount[] items)
+        {
+            Console.WriteLine("Cart:");
+            foreach (ItemCount item in items)
+                Console.WriteLine($"{item.count}x {item.sku}");
+
         }
     }
 }
