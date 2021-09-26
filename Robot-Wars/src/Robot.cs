@@ -1,3 +1,5 @@
+using System;
+
 namespace RobotWars
 {
 
@@ -60,11 +62,11 @@ namespace RobotWars
                     newPosition = new Coordinates(position.x, position.y - 1);
                     break;
                 //If robot is facing West then it moves one unit forwards (positive) in the direction of x-axis
-                case Orientation.W:
+                case Orientation.E:
                     newPosition = new Coordinates(position.x + 1, position.y);
                     break;
                 //If robot is facing East then it moves one unit backwards (negative) in the direction of x-axis
-                case Orientation.E:
+                case Orientation.W:
                     newPosition = new Coordinates(position.x - 1, position.y);
                     break;
 
@@ -85,7 +87,13 @@ namespace RobotWars
         public void Spin(Turn turn)
         {
             //Treats orientations as a closed group under operation + (modulus 4) where turning right is adding 1 and turning left is subtracting 1
-            Orientation newOrientation = (Orientation)((((int)orientation) + ((int)turn)) % 4);
+            int index = (int)orientation + (int)turn;
+
+            if (index < 0)
+                index = 4 + index;
+
+            index = index % 4;
+            Orientation newOrientation = (Orientation)(index);
 
             orientation = newOrientation;
         }

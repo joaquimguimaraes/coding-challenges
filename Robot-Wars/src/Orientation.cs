@@ -13,7 +13,7 @@ namespace RobotWars
         /// <summary>
         /// West
         /// </summary>
-        W = 1,
+        E = 1,
         /// <summary>
         /// South
         /// </summary>
@@ -21,7 +21,7 @@ namespace RobotWars
         /// <summary>
         /// East
         /// </summary>
-        E = 3
+        W = 3
         // defining these ints is not necessary but it is here for clarity purposes
     }
 }
