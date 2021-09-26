@@ -1,6 +1,6 @@
 namespace SupermarketKata {
 
-    class ItemCount
+    public class ItemCount
     {
         public string sku { get; private set; }
         public int count { get; private set; }

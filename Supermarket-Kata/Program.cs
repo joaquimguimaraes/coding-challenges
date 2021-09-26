@@ -39,12 +39,14 @@ namespace SupermarketKata
                     checkout.Scan(key.ToString());
                     Console.WriteLine($"\nAdded '{key}' to cart\n");
 
+                    Console.WriteLine("Cart:");
                     ShowCart(items: checkout.cart.ToArray());
 
                     Console.WriteLine($"\nPress '{breakKey}' to checkout");
                 }
                 else
                 {
+                    Console.WriteLine("Purchased:");
                     ShowCart(items: checkout.cart.ToArray());
                     Console.WriteLine($"\nTotal Price: {checkout.GetTotalPrice(prices)} pence");
                 }
@@ -54,7 +56,6 @@ namespace SupermarketKata
 
         static void ShowCart(ItemCount[] items)
         {
-            Console.WriteLine("Cart:");
             foreach (ItemCount item in items)
                 Console.WriteLine($"{item.count}x {item.sku}");
 

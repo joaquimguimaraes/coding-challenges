@@ -4,7 +4,7 @@ namespace SupermarketKata
     /// <summary>
     /// Struct <c>SpecialPrice</c> describes SKU's special prices when purchased in a bundle
     /// </summary>
-    struct SpecialPrice
+    public struct SpecialPrice
     {
         /// <summary>
         /// Number of units necessary for special price

@@ -19,7 +19,7 @@ namespace RobotWars
             //Stops asking for user input after detecting END
             const string breakWord = "END";
 
-            Console.WriteLine($"Please provide input.\nType '{breakWord}' and press enter when you are finished\n\nInput:");
+            Console.WriteLine($"Please provide input either by typing it manually or pasting provided input.\nType '{breakWord}' and press enter when you are finished\n\nInput:");
             string input = "";
             string inputLine = "";
 

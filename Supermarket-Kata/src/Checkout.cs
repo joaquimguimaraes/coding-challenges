@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SupermarketKata
 {
-    interface ICheckout
+    public interface ICheckout
     {
         /// <summary>
         /// Scans an item and adds it to list of current items;
@@ -20,7 +20,7 @@ namespace SupermarketKata
         int GetTotalPrice(ItemPrice[] currentPricing);
     }
 
-    class Checkout : ICheckout
+    public class Checkout : ICheckout
     {
         /// <summary>
         /// List of items added to the cart

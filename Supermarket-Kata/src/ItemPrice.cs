@@ -5,7 +5,7 @@ namespace SupermarketKata
     /// <summary>
     /// Struct <c>ItemPrice</c> contains information about unit price and special price of a specific SKU
     /// </summary>
-    struct ItemPrice
+    public struct ItemPrice
     {
         /// <summary>
         /// SKU of item
