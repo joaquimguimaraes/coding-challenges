@@ -7,11 +7,11 @@ namespace RobotWars
     enum Turn
     {
         /// <summary>
-        /// Right
+        /// Right (Clockwise)
         /// </summary>
         R = 1,
         /// <summary>
-        /// Left
+        /// Left (Anti-clockwise)
         /// </summary>
         L = -1
     }
