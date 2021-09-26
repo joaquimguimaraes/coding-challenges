@@ -1,12 +1,12 @@
 using System;
 using Xunit;
 
-namespace Tests
+namespace RobotWarsTests
 {
-    public class UnitTest1
+    public class InputTests
     {
         [Fact]
-        public bool Test1()
+        public bool InputTest1()
         {
             //test input
             string input = @"
