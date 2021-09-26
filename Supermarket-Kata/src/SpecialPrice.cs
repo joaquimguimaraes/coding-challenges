@@ -1,20 +1,25 @@
-/// <summary>
-/// Struct <c>SpecialPrice</c> describes SKU's special prices when purchased in a bundle
-/// </summary>
-struct SpecialPrice {
-    /// <summary>
-    /// Number of units necessary for special price
-    /// </summary>
-    public readonly int comboUnits { get; init; }
 
+namespace SupermarketKata
+{
     /// <summary>
-    /// Price for whole bundle
+    /// Struct <c>SpecialPrice</c> describes SKU's special prices when purchased in a bundle
     /// </summary>
-    public readonly int comboPrice { get; init; }
-
-    SpecialPrice(int comboUnits, int comboPrice)
+    struct SpecialPrice
     {
-        this.comboUnits = comboUnits;
-        this.comboPrice = comboPrice;
+        /// <summary>
+        /// Number of units necessary for special price
+        /// </summary>
+        public readonly int bundleUnits { get; init; }
+
+        /// <summary>
+        /// Price for whole bundle
+        /// </summary>
+        public readonly int bundlePrice { get; init; }
+
+        public SpecialPrice (int bundleUnits, int bundlePrice)
+        {
+            this.bundleUnits = bundleUnits;
+            this.bundlePrice = bundlePrice;
+        }
     }
 }
