@@ -6,6 +6,10 @@ namespace SupermarketKata
 {
     class Program
     {
+        
+        ///<summary>
+        /// Function <c>Main</c> deals with user input
+        ///</summary>
         static void Main(string[] args)
         {
 
@@ -66,7 +70,7 @@ Input: ");
         }
 
         /// <summary>
-        /// Displays items added to cart in console
+        /// Displays items which were added to cart in the console
         /// </summary>
         static void ShowCart(ItemCount[] items)
         {
