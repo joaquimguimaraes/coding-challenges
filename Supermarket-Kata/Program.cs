@@ -22,7 +22,7 @@ namespace SupermarketKata
             string[] skus = prices.Select(itemPrice => itemPrice.sku).ToArray();
 
             //Stops asking for user input after detecting the breakKey (Z)
-            const ConsoleKey breakKey = ConsoleKey.Z;
+            const ConsoleKey breakKey = ConsoleKey.Enter;
 
             Console.Clear();
             Console.WriteLine($@"
@@ -31,7 +31,7 @@ The following products are available:
 {string.Join(", ", skus)}
 
 Press their keys to add them to your cart.
-Type '{breakKey}' and press enter to checkout.
+Press {breakKey} to checkout.
 
 Input: ");
 
