@@ -25,7 +25,7 @@ namespace SupermarketKata
         /// <summary>
         /// List of items added to the cart
         /// </summary>
-        List<ItemCount> cart= new List<ItemCount>();
+        public List<ItemCount> cart= new List<ItemCount>();
 
         public Checkout() {}
         public void Scan(string item)
