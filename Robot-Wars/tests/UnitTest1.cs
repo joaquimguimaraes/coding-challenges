@@ -24,12 +24,17 @@ MMRMMRMRRM
 
             string output = RobotWars.Program.ReadInput(input);
 
-            bool result = output == expectedOutput;
+            bool result = trimBlankCharacters(output) == trimBlankCharacters(expectedOutput);
 
-            Assert.False(result, $"Output:\n'{output}'\ndoes not match expected output:\n'{expectedOutput}'");
-            Assert.True(result, $"Output:\n'{output}'\nmatches expected output:\n'{expectedOutput}'");
+            Assert.True(result, $"Output:\n'{output}'\ndoes not match expected output:\n'{expectedOutput}'");
              
             return result;
+        }
+
+        static string trimBlankCharacters(string input)
+        {
+            char[] charsToTrim = {'\n', '\r', ' '};
+            return input.Trim().Trim(charsToTrim);
         }
     }
 }
