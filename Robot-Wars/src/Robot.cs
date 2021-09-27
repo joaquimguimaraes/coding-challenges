@@ -72,9 +72,10 @@ namespace RobotWars
 
             }
 
-            //checks if new position is within boundaries of arena 
-            //moves robot if it is 
-            if (newPosition.x >=0 && newPosition.y >=0 && newPosition.x <= boundaries.x && newPosition.y <= boundaries.y)
+            //checks if new position is within boundaries of arena and moves robot if it is
+            bool withinXAxis = newPosition.x >= 0 && newPosition.x <= boundaries.x;
+            bool withinYAxis = newPosition.y >= 0 && newPosition.y <= boundaries.y;
+            if (withinXAxis && withinYAxis)
                 position = newPosition;
             //does not move robot if new position would be outside arena boundaries
         }
@@ -87,6 +88,7 @@ namespace RobotWars
         public void Spin(Turn turn)
         {
             //Treats orientations as a closed group under operation + (modulus 4) where turning right is adding 1 and turning left is subtracting 1
+            // this approach not only makes the code simpler than an If/Else clause but also makes it much easier to introduce other orientations such as NW, SW, NE, SE and 45 degree turns
             int index = (int)orientation + (int)turn;
 
             if (index < 0)
