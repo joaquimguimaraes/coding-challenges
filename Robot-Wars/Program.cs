@@ -14,12 +14,27 @@ namespace RobotWars
             return character == ' ';
         }
 
+        /// <summary>
+        /// Function <c>Main</c> asks for user input and passes it to <c>ReadInput</c>
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             //Stops asking for user input after detecting END
             const string breakWord = "END";
 
-            Console.WriteLine($"Please provide input either by typing it manually or pasting provided input.\nType '{breakWord}' and press enter when you are finished\n\nInput:");
+            Console.WriteLine($@"
+Please provide input as follows:
+
+The first line of input is the upper-right coordinates of the arena, the lower-left coordinates are assumed to be (0, 0).
+ 
+The rest of the input is information pertaining to the robots that have been deployed. Each robot has two lines of input - the first gives the robot’s position and the second is a series of instructions telling the robot how to move within the arena.
+ 
+The position is made up of two integers and a letter separated by spaces, corresponding to the x and y coordinates and the robot’s orientation. Each robot will finish moving sequentially, which means that the second robot won’t start to move until the first one has finished moving.
+
+Type '{breakWord}' and press enter to submit input
+
+Input:");
             string input = "";
             string inputLine = "";
 
@@ -35,6 +50,12 @@ namespace RobotWars
 
             Console.WriteLine("\nOutput:\n" + ReadInput(input));
         }
+
+        /// <summary>
+        /// Function <c>ReadInput</c> processes user input, creates <c>Robot</c> objects and moves/spins them around the arena
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static string ReadInput(string input)
         {
             //initializes empty list of robots
@@ -72,6 +93,7 @@ namespace RobotWars
                         Orientation orientation = Enum.Parse<Orientation>(lineArgs[2].ToString());
                         currentRobot = new Robot(new Coordinates(xPosition, yPosition), boundaries, orientation);
                     }
+                    //second line tells robot to move/spin
                     else
                     {
                         for (int k = 0; k < lineArgs.Count; k++)
@@ -94,8 +116,8 @@ namespace RobotWars
 
             string output = "";
 
+            // reads final position and orientation of each robot
             foreach (Robot robot in robots)
-
                 output += $"{robot.position.x} {robot.position.y} {robot.orientation}\n";
 
             return output;
